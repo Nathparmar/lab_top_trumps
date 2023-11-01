@@ -11,12 +11,15 @@ public class TopTrumpsService {
 
 
     public String checkWinner(ArrayList<Card> cards) {
+        Card card1 = cards.get(0);
+        Card card2 = cards.get(1);
 
-
-        if (cards.get(0).getCardValue() > cards.get(1).getCardValue()) {
-            return "Card1 wins";
+        if (card1.getCardValue() > card2.getCardValue()) {
+            return String.format("%s of %s wins!", card1.getRank(), card1.getSuit());
+        } else if (card1.getCardValue() < card2.getCardValue()){
+            return String.format("%s of %s wins!", card2.getRank(), card2.getSuit());
         } else {
-            return "Card2 wins";
+            return "It's a draw!";
         }
 
     }

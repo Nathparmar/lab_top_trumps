@@ -18,8 +18,9 @@ public class TopTrumpsController {
     TopTrumpsService topTrumpsService;
 
     @PostMapping // GET localhost:8080/topTrumps
-    public String newGame(@RequestBody ArrayList<Card> cards) {
-        return topTrumpsService.checkWinner(cards);
+    public ResponseEntity<String> newGame(@RequestBody ArrayList<Card> cards) {
+        String message = topTrumpsService.checkWinner(cards);
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 
 
